@@ -14,6 +14,10 @@ RUN mkdir -p /usr/src/erlang \
   && make install \
   && rm -r /usr/src/elixir
 
+# Install Hex and Rebar.
+RUN /usr/local/bin/mix local.hex --force \
+  && /usr/local/bin/mix local.rebar --force
+
 # Clean up.
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
