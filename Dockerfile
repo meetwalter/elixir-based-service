@@ -16,3 +16,7 @@ RUN mkdir -p /usr/src/erlang \
 
 # Clean up.
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Run the microservice.
+RUN mkdir /etc/service/app
+ADD boot.sh /etc/service/app/run
