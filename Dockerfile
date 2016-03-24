@@ -16,6 +16,7 @@ RUN mkdir -p /usr/src/erlang \
 
 # Install Hex and Rebar.
 RUN /usr/local/bin/mix local.hex --force \
+  && /usr/local/bin/mix hex.info \
   && /usr/local/bin/mix local.rebar --force
 
 # Clean up.
