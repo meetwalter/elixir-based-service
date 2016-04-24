@@ -1,4 +1,6 @@
 #!/bin/sh
 
 cd /app
-exec mix start
+
+mix do deps.get, deps.compile --all, compile
+mix start
