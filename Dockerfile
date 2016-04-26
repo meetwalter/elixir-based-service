@@ -1,10 +1,10 @@
 FROM meetwalter/erlang-based-service:18.3
 MAINTAINER Michael Williams
-ENV REFRESHED_AT 2016-03-23
+ENV REFRESHED_AT 2016-04-25
 
 # Set correct environment variables.
 ENV ELIXIR_MAJOR 1.2
-ENV ELIXIR_VERSION 1.2.3
+ENV ELIXIR_VERSION 1.2.4
 
 # Build Elixir from source and install it.
 RUN mkdir -p /usr/src/erlang \
