@@ -8,7 +8,7 @@ ENV ELIXIR_VERSION 1.2.4
 
 # Build Elixir from source and install it.
 RUN mkdir -p /usr/src/erlang \
-  && git clone --branch v1.2.3 --depth 1 https://github.com/elixir-lang/elixir.git /usr/src/elixir \
+  && git clone --branch v1.2.4 --depth 1 https://github.com/elixir-lang/elixir.git /usr/src/elixir \
   && cd /usr/src/elixir \
   && make \
   && make install \
