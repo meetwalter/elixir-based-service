@@ -1,14 +1,14 @@
 FROM meetwalter/erlang-based-service:18.3
 MAINTAINER Michael Williams
-ENV REFRESHED_AT 2016-06-07
+ENV REFRESHED_AT 2016-08-12
 
 # Set correct environment variables.
-ENV ELIXIR_MAJOR 1.2
-ENV ELIXIR_VERSION 1.2.6
+ENV ELIXIR_MAJOR 1.3
+ENV ELIXIR_VERSION 1.3.2
 
 # Build Elixir from source and install it.
 RUN mkdir -p /usr/src/erlang \
-  && git clone --branch v1.2.6 --depth 1 https://github.com/elixir-lang/elixir.git /usr/src/elixir \
+  && git clone --branch v1.3.2 --depth 1 https://github.com/elixir-lang/elixir.git /usr/src/elixir \
   && cd /usr/src/elixir \
   && make \
   && make install \
