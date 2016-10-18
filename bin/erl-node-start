@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+if [ ! -d /node/deps ]; then
+	mix deps.get
+	mix deps.compile
+fi
+
+if [ ! -d /node/_build/prod/consolidated ]; then
+	mix compile
+fi
+
+elixir -pa /node/ebin --sname "service@$(hostname)" -S mix run --no-halt

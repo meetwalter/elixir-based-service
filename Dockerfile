@@ -1,27 +1,17 @@
-FROM meetwalter/erlang-based-service:18.3
-MAINTAINER Michael Williams
-ENV REFRESHED_AT 2016-08-12
+FROM elixir:1.3
 
-# Set correct environment variables.
-ENV ELIXIR_MAJOR 1.3
-ENV ELIXIR_VERSION 1.3.2
+RUN mix do local.hex --force, local.rebar --force
 
-# Build Elixir from source and install it.
-RUN mkdir -p /usr/src/erlang \
-  && git clone --branch v1.3.2 --depth 1 https://github.com/elixir-lang/elixir.git /usr/src/elixir \
-  && cd /usr/src/elixir \
-  && make \
-  && make install \
-  && rm -r /usr/src/elixir
+COPY ./bin /usr/local/bin
+COPY ./node /node
 
-# Install Hex and Rebar.
-RUN /usr/local/bin/mix local.hex --force \
-  && /usr/local/bin/mix hex.info \
-  && /usr/local/bin/mix local.rebar --force
+WORKDIR /node
+ENV MIX_ENV=prod
 
-# Clean up.
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+EXPOSE 22
 
-# Run the microservice on boot.
-RUN mkdir /etc/service/app
-ADD boot.sh /etc/service/app/run
+WORKDIR /node/apps/default
+RUN mix do deps.get, deps.compile, compile
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
+CMD ["start"]

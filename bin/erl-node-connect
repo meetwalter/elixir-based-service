@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec iex --sname "client-$RANDOM@$(hostname)" --remsh "service@$(hostname)"
