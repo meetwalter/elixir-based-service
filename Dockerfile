@@ -10,7 +10,7 @@ ENV MIX_ENV=prod
 
 EXPOSE 22
 
-WORKDIR /node/apps/default
+WORKDIR /node/apps/scaffold
 RUN mix do deps.get, deps.compile, compile
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]

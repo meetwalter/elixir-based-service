@@ -1,8 +1,8 @@
-defmodule Default.Mixfile do
+defmodule Scaffold.Mixfile do
   use Mix.Project
 
   @umbrella_apps File.ls!("../../apps")
-    |> List.delete("default")
+    |> List.delete("scaffold")
     |> Enum.map(&String.to_atom/1)
 
   @umbrella_deps @umbrella_apps
@@ -10,7 +10,7 @@ defmodule Default.Mixfile do
 
 
   def project do
-    [app: :default,
+    [app: :scaffold,
      version: "0.1.0",
      build_path: "../../_build",
      config_path: "../../config/config.exs",
@@ -24,7 +24,7 @@ defmodule Default.Mixfile do
 
   def application do [
     applications: (explicit_apps ++ @umbrella_apps),
-    mod: {Default, []}
+    mod: {Scaffold, []}
   ] end
 
   defp explicit_apps do [

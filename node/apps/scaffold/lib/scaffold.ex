@@ -1,25 +1,25 @@
 require Logger
 
-defmodule Default do
+defmodule Scaffold do
   use Application
 
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(Default.Server, []),
+      worker(Scaffold.Server, []),
     ]
 
-    opts = [strategy: :one_for_one, name: Default.Supervisor]
+    opts = [strategy: :one_for_one, name: Scaffold.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end
 
-defmodule Default.Server do
+defmodule Scaffold.Server do
   use GenServer
 
   def start_link do
-    GenServer.start_link(__MODULE__, nil, name: {:global, Default.Server})
+    GenServer.start_link(__MODULE__, nil, name: {:global, Scaffold.Server})
   end
 
   def init(state) do
