@@ -15,8 +15,8 @@ release: image tag
 	docker push $(NAME)
 
 test-server: image
-	docker run --rm -i -t --name elixir-default-server --publish-all -e "SSH_VIA_GITHUB=meetwalter:9ee98462abe805094323e642e218fa25fe5136f5" $(NAME):$(VERSION)
+	docker run --rm -i -t --name elixir-default-server --publish-all -e "SSH_VIA_GITHUB=meetwalter:ce96b359848acaacca7ffafdbc97dd3831c1e25f" $(NAME):$(VERSION)
 
 test-client: image
-	ssh erlang@$(docker inspect -f '{{index .NetworkSettings "IPAddress"}}' elixir-default-server):$(docker inspect -f '{{index .NetworkSettings "Ports" "22/tcp" 0 "HostPort"}}' elixir-default-server)
+	ssh -p $(docker inspect -f '{{index .NetworkSettings "Ports" "22/tcp" 0 "HostPort"}}' elixir-default-server) erlang@$(docker inspect -f '{{index .NetworkSettings "IPAddress"}}' elixir-default-server)
 	#docker run --rm -i -t --name elixir-default-client $(NAME):$(VERSION) connect
