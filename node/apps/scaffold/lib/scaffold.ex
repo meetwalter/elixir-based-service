@@ -10,7 +10,7 @@ defmodule Scaffold do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(Scaffold.Server, []),
+      worker(Scaffold.EchoServer, []),
     ]
 
     opts = [

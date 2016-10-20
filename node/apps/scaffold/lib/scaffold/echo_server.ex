@@ -1,4 +1,4 @@
-defmodule Scaffold.Server do
+defmodule Scaffold.EchoServer do
   @moduledoc ~S"""
   """
 
@@ -10,17 +10,11 @@ defmodule Scaffold.Server do
   end
 
   def start_link do
-    GenServer.start_link(__MODULE__, nil, name: {:global, Scaffold.Server})
+    GenServer.start_link(__MODULE__, nil, name: {:global, __MODULE__})
   end
 
   def init(state) do
-    GenServer.cast(self, :start_sshd)
     {:ok, state}
-  end
-
-  def handle_cast(:start_sshd, state) do
-    Scaffold.RemoteShellDaemon.start_link
-    {:noreply, state}
   end
 
   def handle_call({:log, level, str}, _from, state) do

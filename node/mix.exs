@@ -8,6 +8,5 @@ defmodule Umbrella.Mixfile do
      deps: deps]
   end
 
-  defp deps do [
-  ] end
+  defp deps, do: []
 end

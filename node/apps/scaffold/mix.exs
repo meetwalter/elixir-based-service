@@ -29,11 +29,11 @@ defmodule Scaffold.Mixfile do
 
   defp explicit_apps do [
     :pretty_console,
-    :tentacat
+    :exuvia
   ] end
 
   defp explicit_deps do [
     {:pretty_console, github: "tsutsu/pretty_console"},
-    {:tentacat, "~> 0.5.3"},
+    {:exuvia, github: "meetwalter/exuvia"},
   ] end
 end
