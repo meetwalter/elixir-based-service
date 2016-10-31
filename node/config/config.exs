@@ -6,7 +6,7 @@ config :elixir,
   ansi_enabled: true
 
 config :logger,
-	level: :debug,
+	level: :info,
   utc_log: true,
   handle_otp_reports: true,
   handle_sasl_reports: true,
