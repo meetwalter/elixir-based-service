@@ -6,7 +6,7 @@ config :elixir,
   ansi_enabled: true
 
 config :exuvia,
-  host_key: {:dir, "/etc/ssh"},
+  host_key: {:dir, "/run/exuvia/host-keys"},
   auth: Exuvia.KeyBag.Github
 
 config :logger,
