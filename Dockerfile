@@ -8,7 +8,7 @@ COPY ./node /node
 WORKDIR /node
 ENV MIX_ENV=prod
 
-EXPOSE 22
+EXPOSE 2022
 
 WORKDIR /node/apps/scaffold
 RUN mix do deps.get, deps.compile, compile
