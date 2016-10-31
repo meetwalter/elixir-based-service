@@ -5,6 +5,10 @@ import_config "../apps/*/config/config.exs"
 config :elixir,
   ansi_enabled: true
 
+config :exuvia,
+  host_key: {:dir, "/etc/ssh"},
+  auth: Exuvia.KeyBag.Github
+
 config :logger,
 	level: :info,
   utc_log: true,
