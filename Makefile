@@ -4,7 +4,7 @@ VERSION=$(shell cat VERSION)
 .PHONY: image tag release
 
 image:
-	docker build -t $(NAME):$(VERSION) .
+	docker build --pull -t $(NAME):$(VERSION) .
 
 tag:
 	docker tag $(NAME):$(VERSION) $(NAME):latest
