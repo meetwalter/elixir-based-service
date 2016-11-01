@@ -1,9 +1,16 @@
 #!/bin/bash
 
-subcommand="$1"; shift
+project_name="scaffold"
+cd /node/apps
+for app in *; do
+	if [ -f "$app/priv/rootmost" ]; then
+		project_name="$app"
+	fi
+done
+export project_name
 
-if type "erl-node-${subcommand}" >/dev/null 2>/dev/null; then
-  exec "erl-node-${subcommand}" "$@"
+if [ -t 1 ] ; then
+  exec "docker-entrypoint.tty" "$@"
 else
-	exec "${subcommand}" "$@"
+  exec "docker-entrypoint.detached" "$@"
 fi

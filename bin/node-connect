@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+exec iex --sname "client-$RANDOM@${project_name}" --remsh "service@${project_name}"

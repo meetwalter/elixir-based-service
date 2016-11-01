@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec script -q -f -e -c "docker-entrypoint.tty $*" /dev/null

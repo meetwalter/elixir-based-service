@@ -1,2 +1,0 @@
-#!/bin/sh
-script -q -f -e -c "erl-node-start2" /dev/null

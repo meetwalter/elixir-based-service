@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+cd /node/apps/scaffold
+
 if [ ! -d /node/deps ]; then
 	mix deps.get
 	mix deps.compile
@@ -9,4 +11,4 @@ if [ ! -d /node/_build/prod/consolidated ]; then
 	mix compile
 fi
 
-elixir -pa /node/ebin --sname "service@$(hostname)" -S mix run --no-halt
+exec elixir -pa /node/ebin --sname "service@${project_name}" --no-halt -S mix run
