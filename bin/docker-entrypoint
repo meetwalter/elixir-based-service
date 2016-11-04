@@ -12,5 +12,5 @@ export project_name
 if [ -t 1 ] ; then
   exec "docker-entrypoint.tty" "$@"
 else
-  exec "docker-entrypoint.detached" "$@"
+  exec "docker-entrypoint.tty" "$@"
 fi
